@@ -59,26 +59,20 @@ void AngleDerivatives(Eigen::Matrix<float, 6, 1> & tf,Eigen::Matrix<float, 8, 3>
 }
 
 void PointDerivatives(Eigen::Matrix<float, 3, 1> & point,Eigen::Matrix<float, 8, 3> & jacobian_coefficients,Eigen::Matrix<float, 18, 3> & hessian_coefficients,Eigen::Matrix<float, 3, 6> & jacobian,Eigen::Matrix<float, 18, 6> & hessian){
-    float jacobian_params[6]={0,0,0,0,0,0};
-    // std::vector<Eigen::Vector3f> hessian_params(6);
-
-
-    std::vector<Eigen::Vector3f,Eigen::aligned_allocator<Eigen::Vector3f> > hessian_params;
-
-
+    float jacobian_params[8]={0,0,0,0,0,0,0,0};
+    std::vector<Eigen::Vector3f,Eigen::aligned_allocator<Eigen::Vector3f> > hessian_params(6);
     for(int i=0;i<8;i++){
         for(int j=0;j<3;j++){
             jacobian_params[i] += point(j) * jacobian_coefficients(i,j);
         }
     }
-    int k=0;
     for(int i=0;i<6;i++){
-        Eigen::Vector3f param_vec;
-        param_vec.x() = point(0) * hessian_coefficients(k,0) + point(1) * hessian_coefficients(k,1) + point(2) * hessian_coefficients(k,2);
-        param_vec.y() = point(0) * hessian_coefficients(k+1,0) + point(1) * hessian_coefficients(k+1,1) + point(2) * hessian_coefficients(k+1,2);
-        param_vec.z() = point(0) * hessian_coefficients(k+2,0) + point(1) * hessian_coefficients(k+2,1) + point(2) * hessian_coefficients(k+2,2);
-        hessian_params.push_back(param_vec);
-        k+=3;
+        hessian_params[i] << 0,0,0;
+        for(int j=0;j<3;j++){
+            hessian_params[i](0) += point(j) * hessian_coefficients(i*3+0,j);
+            hessian_params[i](1) += point(j) * hessian_coefficients(i*3+1,j);
+            hessian_params[i](2) += point(j) * hessian_coefficients(i*3+2,j);
+        }
     }
     jacobian = Eigen::MatrixXf::Zero(3, 6);
     hessian = Eigen::MatrixXf::Zero(18, 6);
@@ -114,25 +108,30 @@ int main(){
     Eigen::Vector3f mean;
     mean << 0,0,0;
     Eigen::MatrixXf cov = Eigen::MatrixXf::Identity(3, 3);
-    std::cout << tf << std::endl;
-    std::cout << std::endl;
-    std::cout << cov << std::endl;
-    std::cout << std::endl;
+    // std::cout << tf << std::endl;
+    // std::cout << std::endl;
+    // std::cout << cov << std::endl;
+    // std::cout << std::endl;
 
     Eigen::Matrix<float, 8, 3> jacobian_coefficients;
     Eigen::Matrix<float, 18, 3> hessian_coefficients;
     AngleDerivatives(tf,jacobian_coefficients,hessian_coefficients);
+    std::cout << "jacobian_coefficients" << std::endl;
     std::cout << jacobian_coefficients << std::endl;
     std::cout << std::endl;
+    std::cout << "hessian_coefficients" << std::endl;
     std::cout << hessian_coefficients << std::endl;
     std::cout << std::endl;
 
     Eigen::Matrix<float, 3, 6> jacobian;
     Eigen::Matrix<float, 18, 6> hessian;
     PointDerivatives(point,jacobian_coefficients,hessian_coefficients,jacobian,hessian);
+    std::cout << "jacobian" << std::endl;
     std::cout << jacobian << std::endl;
     std::cout << std::endl;
+    std::cout << "hessian" << std::endl;
     std::cout << hessian << std::endl;
     std::cout << std::endl;
+    return 0;
 
 }
