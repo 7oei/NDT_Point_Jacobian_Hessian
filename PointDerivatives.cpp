@@ -20,7 +20,7 @@ int main(){
 
     JacobianCoefficientsT jacobian_coefficients;
     HessianCoefficientsT hessian_coefficients;
-    AngleDerivatives(tf,jacobian_coefficients,hessian_coefficients);
+    angleDerivatives(tf,jacobian_coefficients,hessian_coefficients);
     cout << "Jacobian Coefficients is " << endl;
     cout << jacobian_coefficients << endl;
     cout << endl;
@@ -30,7 +30,7 @@ int main(){
 
     PointJacobianT point_jacobian;
     PointHessianT point_hessian;
-    PointDerivatives(point,jacobian_coefficients,hessian_coefficients,point_jacobian,point_hessian);
+    pointDerivatives(point,jacobian_coefficients,hessian_coefficients,point_jacobian,point_hessian);
     cout << "Point Jacobian is " << endl;
     cout << point_jacobian << endl;
     cout << endl;

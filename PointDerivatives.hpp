@@ -90,7 +90,7 @@ tuple<double, JacobianT, HessianT> computeDerivative
   return make_tuple(score, jacobian, hessian);
 }
 
-void AngleDerivatives(TransformT & tf,JacobianCoefficientsT & jacobian_coefficients,HessianCoefficientsT & hessian_coefficients){
+void angleDerivatives(TransformT & tf,JacobianCoefficientsT & jacobian_coefficients,HessianCoefficientsT & hessian_coefficients){
     double cx, cy, cz, sx, sy, sz;
     if (fabs(tf(3)) < 10e-5) {
         cx = 1.0;
@@ -142,7 +142,7 @@ void AngleDerivatives(TransformT & tf,JacobianCoefficientsT & jacobian_coefficie
                                 (-sx * sz + cx * sy * cz),  (-cx * sy * sz - sx * cz),  0;
 }
 
-void PointDerivatives(PointT & point,JacobianCoefficientsT & jacobian_coefficients,HessianCoefficientsT & hessian_coefficients,PointJacobianT & point_jacobian,PointHessianT & point_hessian){
+void pointDerivatives(PointT & point,JacobianCoefficientsT & jacobian_coefficients,HessianCoefficientsT & hessian_coefficients,PointJacobianT & point_jacobian,PointHessianT & point_hessian){
     double jacobian_params[8]={0,0,0,0,0,0,0,0};
     vector<Vector3d,aligned_allocator<Vector3d> > hessian_params(6);
     for(int i=0;i<8;i++){
