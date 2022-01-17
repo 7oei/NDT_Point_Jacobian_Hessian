@@ -46,6 +46,8 @@ message(${Boost_LIBRARIES})
 message(${PYTHON_INCLUDE_DIRS})
 message(${PYTHON_LIBRARIES})
 
+find_package(Eigen3 REQUIRED)
+
 include_directories(
   ${PROJECT_SOURCE_DIR}
   include
@@ -57,7 +59,7 @@ add_library(${PROJECT_NAME} SHARED
   )
 
 target_link_libraries(${PROJECT_NAME}
-  python3.8
+  Eigen3::Eigen
   ${Boost_LIBRARIES}
   ${PYTHON_LIBRARIES}
 )
