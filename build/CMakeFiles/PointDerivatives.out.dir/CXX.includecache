@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 /home/adachi/NDT_Jacobian_Hessian/PointDerivatives.cpp
+PointDerivatives.hpp
+/home/adachi/NDT_Jacobian_Hessian/PointDerivatives.hpp
+
+/home/adachi/NDT_Jacobian_Hessian/PointDerivatives.hpp
 iostream
 -
 Eigen/Dense
@@ -20,6 +24,8 @@ math.h
 vector
 -
 Eigen/StdVector
+-
+bits/stdc++.h
 -
 
 /usr/include/eigen3/Eigen/Cholesky
