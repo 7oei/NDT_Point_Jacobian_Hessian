@@ -17,8 +17,8 @@ score, jacobian, hessian = ndt.calcScore(point, transform)
 
 jacobian = list(map(float, jacobian))
 
-jacobian = np.array(list(map(float, jacobian)), dtype=np.float32).reshape((6, 3)).T
-hessian = np.array(list(map(float, hessian)), dtype=np.float32).reshape((6, 18)).T
+jacobian = np.array(list(map(float, jacobian)), dtype=np.float32).reshape((6, 1)).T
+hessian = np.array(list(map(float, hessian)), dtype=np.float32).reshape((6, 6)).T
 
 print(score)
 print(jacobian)

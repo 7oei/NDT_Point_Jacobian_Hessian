@@ -33,7 +33,7 @@ endif()
 
 if(python_version STREQUAL 3)
   find_package(PythonLibs 3 REQUIRED)
-  find_package(Boost COMPONENTS python38 numpy38 REQUIRED)
+  find_package(Boost COMPONENTS python3 numpy3 REQUIRED)
 elseif(python_version STREQUAL 2)
   find_package(PythonLibs 2.7 REQUIRED)
   find_package(Boost COMPONENTS python numpy REQUIRED)
