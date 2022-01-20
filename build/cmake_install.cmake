@@ -1,4 +1,4 @@
-# Install script for directory: /home/adachi/NDT_Jacobian_Hessian
+# Install script for directory: /home/akio/cross_ws/NDT_Point_Jacobian_Hessian
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/adachi/NDT_Jacobian_Hessian/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/akio/cross_ws/NDT_Point_Jacobian_Hessian/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -52,8 +52,9 @@ public:
   }
 
   void setMap(){
-    mu << 1, 0, 0;
-    cov = MatrixXd::Identity(3, 3);
+    mu << 0, 0, 0;
+    //cov = MatrixXd::Identity(3, 3);
+    cov << 2, 2, 0, 2, 4, 0, 0, 0, 0.1;
 
   }
 

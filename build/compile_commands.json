@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/adachi/NDT_Jacobian_Hessian/build",
-  "command": "/usr/bin/c++   -I/usr/include/eigen3    -o CMakeFiles/PointDerivatives.out.dir/PointDerivatives.cpp.o -c /home/adachi/NDT_Jacobian_Hessian/PointDerivatives.cpp",
-  "file": "/home/adachi/NDT_Jacobian_Hessian/PointDerivatives.cpp"
-}
-]
