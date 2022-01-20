@@ -52,7 +52,7 @@ public:
   }
 
   void setMap(){
-    mu << 0, 0, 0;
+    mu << 1, 0, 0;
     cov = MatrixXd::Identity(3, 3);
 
   }
